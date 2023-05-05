@@ -88,6 +88,27 @@ char    *prompt(void)
     return (line);
 }
 
+void	ft_shlvl(t_env_list **envlist, t_export **export)
+{
+	t_env_list	*env;
+	t_export	*exp;
+
+	env = *envlist;
+	exp = *export;
+	while (env)
+	{
+		if (!ft_strcmp("SHLVL", env->name))
+			env->value = ft_itoa(ft_atoi(env->value) + 1);
+		env = env->next;
+	}
+	while (exp)
+	{
+		if (!ft_strcmp("SHLVL", exp->var))
+			exp->value = ft_itoa(ft_atoi(exp->value) + 1);
+		exp = exp->next;
+	}
+}
+
 int main(int ac, char **av, char **env)
 {
     char			*line;
@@ -99,6 +120,7 @@ int main(int ac, char **av, char **env)
 	export_list = NULL;
 	env_list = NULL;
 	init_env(&export_list, &env_list, env);
+	ft_shlvl(&env_list, &export_list);
     while (1)
     {
 		line = prompt();

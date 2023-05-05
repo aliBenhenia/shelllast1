@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export_utils1.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abenheni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/05 12:16:17 by abenheni          #+#    #+#             */
+/*   Updated: 2023/05/05 12:16:23 by abenheni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 t_export	*addnew_export(char *var, char *value)
@@ -45,7 +57,7 @@ t_env_list	*addnew_env(char *var, char *value)
 
 void	addback_env(t_env_list **a, t_env_list *new)
 {
-  	t_env_list	*head;
+	t_env_list	*head;
 
 	new->next = NULL;
 	head = (*a);

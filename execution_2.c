@@ -87,7 +87,5 @@ void    execute_builtins(t_cmd_line **cmd_line, t_env_list **env_list,t_export *
     if (!ft_strcmp((*cmd_line)->str[0], "unset"))
         do_unset((*cmd_line)->str,export_list,env_list, 0);
     if (!ft_strcmp((*cmd_line)->str[0], "exit"))
-    {
        do_exit((*cmd_line)->str);
-    }
 }

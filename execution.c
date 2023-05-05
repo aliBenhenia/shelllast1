@@ -31,6 +31,7 @@ void execute_command(t_cmd_line **cmd_line, t_env_list **env_list, int **fd, t_e
 	int no_file = 1;
 	t_redirections	*l_infile;
 	t_redirections	*l_outfile;
+
 	int i = 0;
 	int flg = 0;
 	int	lst = count_list(cmd_line);
@@ -61,7 +62,7 @@ void execute_command(t_cmd_line **cmd_line, t_env_list **env_list, int **fd, t_e
 		close_pipes(fd , i, count_list(cmd_line), flg);
 		cmd_tmp = cmd_tmp->next;
 		i++;
-	}	
+	}
 	exit_status(count_list(cmd_line), pid);
 }
 

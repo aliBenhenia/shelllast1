@@ -204,4 +204,11 @@ void	append_string(char *name, char *value,t_export **export, t_env_list **env_l
 void	error_od_export(char *s);
 int correct_name(char *s);
 int	eqaul_last_only(char *s);
+void	edit_env(t_env_list	**env_list, char *name, char *value);
+void	append_env(t_env_list **env_list, char *name, char *value);
+void	insert(t_export **head, t_export *new_node);
+void	sort(t_export **head);
+void	ft_putstr_fd(char *s, int fd);
+int     ft_atoi(const char *str);
+
 #endif

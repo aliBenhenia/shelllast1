@@ -12,15 +12,15 @@
 
 #include "minishell.h"
 
-void removeNode2(t_env_list **env, char *str)
+void	rm_node2(t_env_list **env, char *str)
 {
 	t_env_list	*head;
 	t_env_list	*temp;
 
 	head = (*env);
-	if(head == NULL)
-		return;
-	if(head != NULL && ft_strcmp(head->name,str) == 0)
+	if (head == NULL)
+		return ;
+	if (head != NULL && ft_strcmp(head->name, str) == 0)
 	{
 		temp = (*env);
 		(*env) = (*env)->next;
@@ -29,7 +29,7 @@ void removeNode2(t_env_list **env, char *str)
 	}
 	while (head != NULL && head->next != NULL)
 	{
-		if (ft_strcmp(head->next->name,str) == 0)
+		if (ft_strcmp(head->next->name, str) == 0)
 		{
 			temp = head->next;
 			head->next = temp->next;
@@ -39,15 +39,16 @@ void removeNode2(t_env_list **env, char *str)
 			head = head->next;
 	}
 }
-void removeNode(t_export **export, char *str)
+
+void	rm_node(t_export **export, char *str)
 {
 	t_export	*head;
 	t_export	*temp;
 
 	head = (*export);
-	if(head == NULL)
-		return;
-	if(head != NULL && ft_strcmp(head->var,str) == 0)
+	if (head == NULL)
+		return ;
+	if (head != NULL && ft_strcmp(head->var, str) == 0)
 	{
 		temp = (*export);
 		(*export) = (*export)->next;
@@ -56,7 +57,7 @@ void removeNode(t_export **export, char *str)
 	}
 	while (head != NULL && head->next != NULL)
 	{
-		if (ft_strcmp(head->next->var,str) == 0)
+		if (ft_strcmp(head->next->var, str) == 0)
 		{
 			temp = head->next;
 			head->next = temp->next;
@@ -74,14 +75,14 @@ int	check_name_is_exist(char *s, t_export *export)
 	head = export;
 	while (head)
 	{
-		if(ft_strcmp(head->var,s) == 0)
+		if (ft_strcmp(head->var, s) == 0)
 			return (1);
 		head = head->next;
 	}
-	return(0);
+	return (0);
 }
 
-void    do_unset(char *str[],t_export **data, t_env_list **env_list, int flag)
+void	do_unset(char *str[], t_export **data, t_env_list **env_list, int flag)
 {
 	int	i;
 
@@ -91,15 +92,15 @@ void    do_unset(char *str[],t_export **data, t_env_list **env_list, int flag)
 	i = 1;
 	while (str[i])
 	{
-		if(check_name_is_exist(str[i],(*data)))
+		if (check_name_is_exist(str[i], (*data)))
 		{
-			removeNode(data,str[i]);
-			removeNode2(env_list,str[i]);
+			rm_node(data, str[i]);
+			rm_node2(env_list, str[i]);
 		}
 		else
 			error_od_export(str[i]);
 		i++;
 	}
 	if (flag)
-        exit(g_var.exit_state);
+		exit(g_var.exit_state);
 }

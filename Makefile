@@ -1,9 +1,9 @@
 NAME = minishell
 CC = cc 
-FLAGS = -w #-Wall -Werror -Wextra 
+FLAGS = -w -Wall -Werror -Wextra 
 SRC = minishell.c utils.c utils2.c tokenizer.c tokenizer_utils.c tokenizer_utils2.c syntax.c parser.c parser_utils.c expander.c \
 		execution.c execution_2.c execution_utils.c cdpwd.c redirections.c redirections_2.c ft_heredoc.c execution_main_utils.c \
-		init_env.c export.c unset.c echo.c exit.c export_utils1.c  export_utils2.c export_utils3.c
+		init_env.c export.c unset.c echo.c exit.c export_utils1.c  export_utils2.c export_utils3.c export_utils4.c init_env_utils.c
 OBJ = $(SRC:.c=.o)
 
 
